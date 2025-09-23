@@ -1,0 +1,658 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
+
+/* RTL Support */
+[dir="rtl"] {
+  direction: rtl;
+}
+
+/* Only apply specific RTL fixes where needed */
+[dir="rtl"] .text-left {
+  text-align: right;
+}
+
+[dir="rtl"] .text-right {
+  text-align: left;
+}
+
+/* RTL spacing utilities */
+[dir="rtl"] .rtl-ml-auto {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+[dir="rtl"] .rtl-mr-auto {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+/* RTL padding utilities */
+[dir="rtl"] .rtl-pl-4 {
+  padding-left: 0;
+  padding-right: 1rem;
+}
+
+[dir="rtl"] .rtl-pr-4 {
+  padding-right: 0;
+  padding-left: 1rem;
+}
+
+/* RTL border utilities */
+[dir="rtl"] .rtl-border-l {
+  border-left: none;
+  border-right: 1px solid;
+}
+
+[dir="rtl"] .rtl-border-r {
+  border-right: none;
+  border-left: 1px solid;
+}
+
+/* RTL flex utilities - only for specific cases */
+[dir="rtl"] .rtl-flex-row-reverse {
+  flex-direction: row-reverse;
+}
+
+/* Keep icons and buttons in natural order */
+[dir="rtl"] .keep-ltr {
+  direction: ltr;
+}
+
+@layer base {
+  :root {
+    /* Enterprise Color Palette */
+    --background: 0 0% 100%;
+    --foreground: 220 15% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 15% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 15%;
+
+    /* Professional Primary - Corporate Blue */
+    --primary: 220 25% 35%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Professional Secondary - Neutral Gray */
+    --secondary: 210 20% 40%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 15% 96%;
+    --muted-foreground: 220 10% 45%;
+
+    /* Professional Accent - Executive Orange */
+    --accent: 25 90% 48%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 220 25% 35%;
+
+    --radius: 0.5rem;
+
+    /* Enterprise AI Colors */
+    --ai-primary: 220 25% 35%;
+    --ai-secondary: 25 90% 48%;
+    --ai-success: 142.1 76.2% 36.3%;
+    --ai-warning: 32.6 94.6% 43.7%;
+    --ai-background: 210 15% 96%;
+    --ai-surface: 0 0% 100%;
+    --ai-border: 220 15% 88%;
+
+    /* Corporate Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(220 25% 35%) 0%, hsl(220 25% 45%) 100%);
+    --gradient-enterprise: linear-gradient(135deg, hsl(220 25% 35%) 0%, hsl(220 25% 45%) 50%, hsl(25 90% 48%) 100%);
+    --gradient-surface: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(210 15% 96%) 100%);
+
+    /* Professional Shadows */
+    --shadow-premium: 0 10px 25px -5px hsl(220 25% 35% / 0.08), 0 10px 10px -5px hsl(220 25% 35% / 0.04);
+    --shadow-enterprise: 0 4px 6px -1px hsl(220 25% 35% / 0.05), 0 2px 4px -1px hsl(220 25% 35% / 0.03);
+    --shadow-glass: 0 8px 32px 0 hsl(220 25% 35% / 0.1);
+
+    /* Corporate Glass Morphism */
+    --glass-background: hsl(0 0% 100% / 0.85);
+    --glass-border: hsl(0 0% 100% / 0.2);
+    --glass-backdrop: blur(12px);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Enterprise Dark Mode */
+    --background: 220 25% 8%;
+    --foreground: 220 15% 92%;
+
+    --card: 220 25% 10%;
+    --card-foreground: 220 15% 92%;
+
+    --popover: 220 25% 10%;
+    --popover-foreground: 220 15% 92%;
+
+    --primary: 220 25% 60%;
+    --primary-foreground: 220 25% 5%;
+
+    --secondary: 210 20% 50%;
+    --secondary-foreground: 220 25% 5%;
+
+    --muted: 220 20% 12%;
+    --muted-foreground: 220 10% 65%;
+
+    --accent: 25 90% 55%;
+    --accent-foreground: 220 25% 5%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
+    --ring: 220 25% 60%;
+
+    /* Enterprise AI Dark Colors */
+    --ai-primary: 220 25% 60%;
+    --ai-secondary: 25 90% 55%;
+    --ai-success: 142.1 70.6% 45.3%;
+    --ai-warning: 32.6 94.6% 43.7%;
+    --ai-background: 220 20% 12%;
+    --ai-surface: 220 25% 10%;
+    --ai-border: 220 20% 18%;
+
+    /* Enterprise Dark Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(220 25% 60%) 0%, hsl(220 25% 50%) 100%);
+    --gradient-enterprise: linear-gradient(135deg, hsl(220 25% 60%) 0%, hsl(220 25% 50%) 50%, hsl(25 90% 55%) 100%);
+    --gradient-surface: linear-gradient(145deg, hsl(220 25% 10%) 0%, hsl(220 20% 12%) 100%);
+
+    /* Enterprise Dark Glass */
+    --glass-background: hsl(220 25% 8% / 0.85);
+    --glass-border: hsl(220 15% 92% / 0.1);
+    --glass-backdrop: blur(12px);
+    
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Enterprise Utility Classes */
+@layer utilities {
+  /* Galaxy Magic Animations */
+  @keyframes twinkle {
+    0%, 100% { 
+      opacity: 0.3;
+      transform: scale(0.8);
+    }
+    50% { 
+      opacity: 1;
+      transform: scale(1.2);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% { 
+      transform: translateY(0px) rotate(0deg);
+    }
+    33% { 
+      transform: translateY(-10px) rotate(120deg);
+    }
+    66% { 
+      transform: translateY(5px) rotate(240deg);
+    }
+  }
+
+  .animate-twinkle {
+    animation: twinkle 2s ease-in-out infinite;
+  }
+  
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  /* Enhanced Button Gradients */
+  .btn-gradient-primary {
+    background: var(--gradient-primary);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .btn-gradient-primary:hover {
+    background: var(--gradient-enterprise);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-premium);
+  }
+
+  .btn-gradient-magical {
+    background: linear-gradient(135deg, 
+      #1a1a1a 0%, 
+      #2d2d2d 20%,
+      #ff6b35 50%, 
+      #ff8c42 80%,
+      #2d2d2d 100%
+    );
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #ff6b35/30;
+  }
+
+  .btn-gradient-magical:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 25px -8px #ff6b35/40, 0 0 20px #ff6b35/20;
+    animation-duration: 1s;
+    border-color: #ff6b35/60;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-enterprise {
+    background: var(--gradient-enterprise);
+  }
+  
+  .gradient-surface {
+    background: var(--gradient-surface);
+  }
+  
+  .glass-morphism {
+    background: var(--glass-background);
+    backdrop-filter: var(--glass-backdrop);
+    border: 1px solid var(--glass-border);
+  }
+  
+  .shadow-premium {
+    box-shadow: var(--shadow-premium);
+  }
+  
+  .shadow-enterprise {
+    box-shadow: var(--shadow-enterprise);
+  }
+  
+  .shadow-glass {
+    box-shadow: var(--shadow-glass);
+  }
+  
+  .enterprise-gradient-text {
+    background: var(--gradient-enterprise);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Professional Loading Animations */
+  @keyframes float-horizontal {
+    0% { transform: translateX(-100px); }
+    100% { transform: translateX(calc(100vw + 100px)); }
+  }
+
+  @keyframes orbit-0 {
+    0% { transform: translate(-50%, -50%) rotate(0deg) translateX(40px) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg) translateX(40px) rotate(-360deg); }
+  }
+
+  @keyframes orbit-1 {
+    0% { transform: translate(-50%, -50%) rotate(120deg) translateX(35px) rotate(-120deg); }
+    100% { transform: translate(-50%, -50%) rotate(480deg) translateX(35px) rotate(-480deg); }
+  }
+
+  @keyframes orbit-2 {
+    0% { transform: translate(-50%, -50%) rotate(240deg) translateX(30px) rotate(-240deg); }
+    100% { transform: translate(-50%, -50%) rotate(600deg) translateX(30px) rotate(-600deg); }
+  }
+
+  @keyframes slide-pipeline {
+    0% { transform: translateX(0) translateY(-50%); }
+    100% { transform: translateX(400px) translateY(-50%); }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  @keyframes rainbow-border {
+    0% { 
+      background-position: 0% 50%; 
+      filter: brightness(1) saturate(1.2);
+    }
+    25% { 
+      background-position: 100% 25%; 
+      filter: brightness(1.3) saturate(1.5);
+    }
+    50% { 
+      background-position: 200% 50%; 
+      filter: brightness(1.1) saturate(1.8);
+    }
+    75% { 
+      background-position: 100% 75%; 
+      filter: brightness(1.4) saturate(1.3);
+    }
+    100% { 
+      background-position: 0% 50%; 
+      filter: brightness(1) saturate(1.2);
+    }
+  }
+
+  @keyframes shimmer-glow {
+    0% { opacity: 0.8; }
+    50% { opacity: 1; }
+    100% { opacity: 0.8; }
+  }
+
+  /* AI Button Styles */
+  .ai-button {
+    background: transparent !important;
+    border: 2px solid transparent !important;
+    border-radius: 0.5rem !important;
+    color: hsl(220 15% 15%) !important;
+    font-weight: 600 !important;
+    position: relative !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    background-image: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(210 15% 96%) 100%),
+                     linear-gradient(45deg, #ff6b35, #f59e0b, #10b981, #3b82f6, #8b5cf6, #ec4899, #ef4444, #ff6b35) !important;
+    background-origin: border-box, border-box !important;
+    background-clip: padding-box, border-box !important;
+    background-size: 100% 100%, 200% 200% !important;
+    animation: rainbow-border 2s ease-in-out infinite !important;
+    overflow: hidden !important;
+    contain: layout !important;
+  }
+
+  .ai-button::before {
+    display: none !important;
+  }
+
+  .ai-button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 25px -8px hsl(220 25% 35% / 0.3) !important;
+    background: linear-gradient(135deg, hsl(0 0% 98%) 0%, hsl(210 15% 94%) 100%) !important;
+  }
+
+  .ai-button .flex {
+    position: relative !important;
+    z-index: 1 !important;
+  }
+
+  /* Futuristic AI Loading Animations */
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  @keyframes slide-pipeline {
+    0% {
+      transform: translateX(0) translateY(-50%);
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateX(calc(100vw - 100px)) translateY(-50%);
+      opacity: 0;
+    }
+  }
+
+  @keyframes float-horizontal {
+    0% {
+      transform: translateX(-100px);
+    }
+    100% {
+      transform: translateX(calc(100vw + 100px));
+    }
+  }
+
+  @keyframes orbit-0 {
+    from {
+      transform: translate(-50%, -50%) rotate(0deg) translateX(40px) rotate(0deg);
+    }
+    to {
+      transform: translate(-50%, -50%) rotate(360deg) translateX(40px) rotate(-360deg);
+    }
+  }
+
+  @keyframes orbit-1 {
+    from {
+      transform: translate(-50%, -50%) rotate(120deg) translateX(35px) rotate(-120deg);
+    }
+    to {
+      transform: translate(-50%, -50%) rotate(480deg) translateX(35px) rotate(-480deg);
+    }
+  }
+
+  @keyframes orbit-2 {
+    from {
+      transform: translate(-50%, -50%) rotate(240deg) translateX(30px) rotate(-240deg);
+    }
+    to {
+      transform: translate(-50%, -50%) rotate(600deg) translateX(30px) rotate(-600deg);
+    }
+  }
+
+  @keyframes float-particles {
+    0% {
+      transform: translateY(100vh) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100px) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes draw {
+    0% {
+      stroke-dashoffset: 200;
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      stroke-dashoffset: 0;
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes scan-lines {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(100vh);
+    }
+  }
+
+  @keyframes data-flow {
+    0% {
+      background-position: 0% 50%;
+      box-shadow: 0 0 10px rgba(52, 211, 153, 0.3);
+    }
+    50% {
+      background-position: 100% 50%;
+      box-shadow: 0 0 20px rgba(52, 211, 153, 0.6);
+    }
+    100% {
+      background-position: 0% 50%;
+      box-shadow: 0 0 10px rgba(52, 211, 153, 0.3);
+    }
+  }
+
+  @keyframes drawLine {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0.8;
+    }
+    70% {
+      transform: translateX(0%);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(0%);
+      opacity: 0.6;
+    }
+  }
+
+  /* LEGO Loading Animations */
+  @keyframes bounce-in {
+    0% { 
+      transform: scale(0.8); 
+      opacity: 0; 
+    }
+    50% { 
+      transform: scale(1.1); 
+      opacity: 1; 
+    }
+    100% { 
+      transform: scale(1); 
+      opacity: 1; 
+    }
+  }
+  
+  @keyframes connect {
+    0% { 
+      width: 0%; 
+    }
+    100% { 
+      width: 100%; 
+    }
+  }
+  
+  @keyframes slide-right {
+    0% { 
+      transform: translateX(-100%); 
+    }
+    100% { 
+      transform: translateX(100%); 
+    }
+  }
+  
+  @keyframes lego-pop {
+    0% { 
+      transform: translateY(20px) scale(0.8); 
+      opacity: 0;
+    }
+    70% { 
+      transform: translateY(-5px) scale(1.05); 
+    }
+    100% { 
+      transform: translateY(0) scale(1); 
+      opacity: 1;
+    }
+  }
+  
+  @keyframes connection-flow {
+    0% { 
+      transform: scaleX(0); 
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% { 
+      transform: scaleX(1); 
+      opacity: 1;
+    }
+  }
+  
+  .animate-bounce-in {
+    animation: bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .animate-connect {
+    animation: connect 1s ease-in-out;
+  }
+
+  .animate-lego-pop {
+    animation: lego-pop 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .animate-connection-flow {
+    animation: connection-flow 0.5s ease-out;
+    transform-origin: left center;
+  }
+
+  @keyframes doodle-draw {
+    0%, 100% {
+      stroke-dasharray: "3 2 1 2";
+      stroke-dashoffset: 0;
+    }
+    25% {
+      stroke-dasharray: "2 3 2 1";
+      stroke-dashoffset: 8;
+    }
+    50% {
+      stroke-dasharray: "1 2 3 2";
+      stroke-dashoffset: 15;
+    }
+    75% {
+      stroke-dasharray: "3 1 2 3";
+      stroke-dashoffset: 5;
+    }
+  }
+
+  @keyframes doodle-wiggle {
+    0%, 100% {
+      transform: rotate(0deg) scale(1);
+    }
+    25% {
+      transform: rotate(-1deg) scale(1.02);
+    }
+    50% {
+      transform: rotate(1deg) scale(0.98);
+    }
+    75% {
+      transform: rotate(-0.5deg) scale(1.01);
+    }
+  }
+
+  @keyframes flow {
+    0% {
+      stroke-dashoffset: 0;
+    }
+    100% {
+      stroke-dashoffset: 16;
+    }
+  }
+}

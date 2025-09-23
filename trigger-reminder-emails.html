@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trigger First Invoice Reminder Emails</title>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <h1>Triggering First Invoice Reminder Emails...</h1>
+    <div id="status">Processing...</div>
+    
+    <script>
+        const supabase = window.supabase.createClient(
+            'https://dsvtpfgkguhpkxcdquce.supabase.co',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRzdnRwZmdrZ3VocGt4Y2RxdWNlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA5NzMxMTQsImV4cCI6MjA2NjU0OTExNH0.ueAfEz7nSwVJUTR5ha_l4D9j9B2bIQOkkkDOEpd7_G0'
+        );
+
+        async function triggerReminderEmails() {
+            try {
+                document.getElementById('status').innerHTML = 'Sending reminder emails...';
+                
+                const { data, error } = await supabase.functions.invoke('send-no-invoice-reminder');
+
+                if (error) {
+                    document.getElementById('status').innerHTML = `Error: ${error.message}`;
+                    console.error('Error:', error);
+                    return;
+                }
+
+                document.getElementById('status').innerHTML = `
+                    <h2 style="color: green;">Reminder Emails Sent Successfully!</h2>
+                    <p><strong>Users Checked:</strong> ${data.usersChecked || 0}</p>
+                    <p><strong>Emails Sent:</strong> ${data.emailsSent || 0}</p>
+                    <p>All eligible users (registered 3+ days ago without invoices) have been sent reminder emails with the new xinvoice.app domain.</p>
+                `;
+                console.log('Success:', data);
+            } catch (error) {
+                document.getElementById('status').innerHTML = `Error: ${error.message}`;
+                console.error('Error:', error);
+            }
+        }
+
+        // Auto-run when page loads
+        triggerReminderEmails();
+    </script>
+</body>
+</html>

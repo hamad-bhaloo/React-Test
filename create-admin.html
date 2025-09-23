@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Admin User</title>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <h1>Creating Admin User...</h1>
+    <div id="status">Processing...</div>
+    
+    <script>
+        const supabase = window.supabase.createClient(
+            'https://dsvtpfgkguhpkxcdquce.supabase.co',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRzdnRwZmdrZ3VocGt4Y2RxdWNlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA5NzMxMTQsImV4cCI6MjA2NjU0OTExNH0.ueAfEz7nSwVJUTR5ha_l4D9j9B2bIQOkkkDOEpd7_G0'
+        );
+
+        async function createAdmin() {
+            try {
+                const { data, error } = await supabase.functions.invoke('create-admin-user', {
+                    body: {
+                        email: 'admin@accellionx.com',
+                        password: 'Password@123',
+                        fullName: 'Admin User'
+                    }
+                });
+
+                if (error) {
+                    document.getElementById('status').innerHTML = `Error: ${error.message}`;
+                    console.error('Error:', error);
+                    return;
+                }
+
+                document.getElementById('status').innerHTML = `
+                    <h2 style="color: green;">Admin User Created Successfully!</h2>
+                    <p><strong>Email:</strong> admin@accellionx.com</p>
+                    <p><strong>Password:</strong> Password@123</p>
+                    <p><strong>Role:</strong> Admin</p>
+                    <p>You can now login with these credentials and access the admin area.</p>
+                `;
+                console.log('Success:', data);
+            } catch (error) {
+                document.getElementById('status').innerHTML = `Error: ${error.message}`;
+                console.error('Error:', error);
+            }
+        }
+
+        // Auto-run when page loads
+        createAdmin();
+    </script>
+</body>
+</html>

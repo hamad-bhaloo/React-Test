@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Transparent background with inner margins so the X appears smaller -->
+  <rect width="512" height="512" fill="none"/>
+  <!-- Roughly 15% margin: place the image centered at 360x360 starting at (76,76) -->
+  <image href="/lovable-uploads/4ee3ca2e-9739-4e04-b4d6-7b21e81ebfe8.png" x="76" y="76" width="360" height="360" preserveAspectRatio="xMidYMid meet"/>
+</svg>

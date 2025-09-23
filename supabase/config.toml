@@ -1,0 +1,46 @@
+project_id = "dsvtpfgkguhpkxcdquce"
+
+[functions.send-welcome-email]
+verify_jwt = true
+
+[functions.send-no-invoice-reminder]
+verify_jwt = false
+
+[functions.schedule-no-invoice-reminders]
+verify_jwt = false
+
+[functions.send-first-invoice-congratulations]
+verify_jwt = true
+
+[functions.confirmation-email]
+verify_jwt = false
+
+[functions.quickbooks-auth]
+verify_jwt = true
+
+[functions.quickbooks-callback]
+verify_jwt = false
+
+[functions.quickbooks-sync]
+verify_jwt = true
+
+[functions.get-public-invoice]
+verify_jwt = false
+
+[functions.invoice-reminders]
+verify_jwt = false
+
+[functions.send-manual-reminder]
+verify_jwt = true
+
+[functions.fbr-setup]
+verify_jwt = true
+
+[functions.fbr-submit-invoice]
+verify_jwt = true
+
+[functions.create-crypto-payment]
+verify_jwt = false
+
+[functions.nowpayments-webhook]
+verify_jwt = false
