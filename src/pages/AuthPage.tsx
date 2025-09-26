@@ -292,7 +292,7 @@ const AuthPage = () => {
           <CardHeader>
             <CardTitle>Get Started</CardTitle>
             <CardDescription>
-              Sign in to your account or create a new one account on hamad.accellionx.com
+              Sign in to your account or create a new one account
             </CardDescription>
           </CardHeader>
           <CardContent>
